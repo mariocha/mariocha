@@ -2,7 +2,7 @@
 - 👀 I’m interested in everything SketchUp, Layout
 - 🌱 and MAC.
 - 💞️ and translation to french
-- 📫 Reach me through my web site https://formation-sketchup-quebec.com
+- 📫 Reach me through my web site https://3d-illustrations.com
 
 <!---
 mariocha/mariocha is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.

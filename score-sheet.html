@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Sheet - 4x10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        
+        .total-row {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .total-cell {
+            background-color: #e8f5e9;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .row-label {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Score Sheet</h1>
+        <table id="scoreTable">
+            <thead>
+                <tr>
+                    <th>Row</th>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <th>Column 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-label">Row 1</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="1" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="1" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="1" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="1" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 2</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="2" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="2" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="2" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="2" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 3</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="3" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="3" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="3" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="3" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 4</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="4" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="4" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="4" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="4" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 5</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="5" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="5" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="5" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="5" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 6</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="6" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="6" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="6" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="6" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 7</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="7" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="7" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="7" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="7" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 8</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="8" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="8" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="8" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="8" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 9</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="9" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="9" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="9" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="9" value="0"></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Row 10</td>
+                    <td><input type="number" class="score-input" data-col="1" data-row="10" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="2" data-row="10" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="3" data-row="10" value="0"></td>
+                    <td><input type="number" class="score-input" data-col="4" data-row="10" value="0"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td>Total</td>
+                    <td class="total-cell" id="total-col-1">0</td>
+                    <td class="total-cell" id="total-col-2">0</td>
+                    <td class="total-cell" id="total-col-3">0</td>
+                    <td class="total-cell" id="total-col-4">0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script>
+        // Function to update totals for all columns
+        function updateTotals() {
+            // Initialize totals for each column
+            const totals = {1: 0, 2: 0, 3: 0, 4: 0};
+            
+            // Get all input fields
+            const inputs = document.querySelectorAll('.score-input');
+            
+            // Calculate sum for each column
+            inputs.forEach(input => {
+                const col = parseInt(input.getAttribute('data-col'));
+                const value = parseFloat(input.value);
+                totals[col] += isNaN(value) ? 0 : value;
+            });
+            
+            // Update the total cells
+            for (let col = 1; col <= 4; col++) {
+                document.getElementById(`total-col-${col}`).textContent = totals[col].toFixed(2);
+            }
+        }
+        
+        // Add event listeners to all input fields
+        document.querySelectorAll('.score-input').forEach(input => {
+            input.addEventListener('input', updateTotals);
+            input.addEventListener('change', updateTotals);
+        });
+        
+        // Initialize totals on page load
+        updateTotals();
+    </script>
+</body>
+</html>

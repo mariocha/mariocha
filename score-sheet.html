@@ -185,8 +185,8 @@
             // Calculate sum for each column
             inputs.forEach(input => {
                 const col = parseInt(input.getAttribute('data-col'));
-                const value = parseFloat(input.value) || 0;
-                totals[col] += value;
+                const value = parseFloat(input.value);
+                totals[col] += isNaN(value) ? 0 : value;
             });
             
             // Update the total cells

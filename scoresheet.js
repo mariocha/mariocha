@@ -1,11 +1,17 @@
 // Global state to manage all rows
 const TOTAL_ROWS = 10;
 
+// Helper function to get the element ID suffix for a given row number
+// Row 1 → 11, Row 2 → 21, Row 3 → 31, etc.
+function getElementIdSuffix(rowNum) {
+    return rowNum * 10 + 1;
+}
+
 // Initialize the score sheet
 function initScoreSheet() {
     // Add event listeners to all input fields with a single global handler
     for (let row = 1; row <= TOTAL_ROWS; row++) {
-        const mancheNum = row * 10 + 1; // e.g., 11, 21, 31...
+        const mancheNum = getElementIdSuffix(row);
         
         // Get input elements for this row
         const M = document.querySelector(`#M${mancheNum} input`);
@@ -33,7 +39,7 @@ function recalculateFromRow(startRow) {
 
 // Calculate totals for a specific row
 function calculateRow(rowNum) {
-    const mancheNum = rowNum * 10 + 1; // e.g., 11, 21, 31...
+    const mancheNum = getElementIdSuffix(rowNum);
     
     // Get elements for this row
     const mancheSpan = document.getElementById(`mancheNum${rowNum}`);
@@ -86,7 +92,7 @@ function calculateRow(rowNum) {
     let previousCumulativeTotal = 0;
     if (rowNum > 1) {
         const prevRowNum = rowNum - 1;
-        const prevMancheNum = prevRowNum * 10 + 1;
+        const prevMancheNum = getElementIdSuffix(prevRowNum);
         const prevTotaL = document.getElementById(`totaL${prevMancheNum}`);
         if (prevTotaL) {
             previousCumulativeTotal = parseInt(prevTotaL.textContent) || 0;

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .manche-col {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        
+        .total-col {
+            background-color: #e8f5e9;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Score Sheet</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Manche</th>
+                <th>M</th>
+                <th>L</th>
+                <th>B</th>
+                <th>Total</th>
+                <th>Total B</th>
+                <th>Cumulative Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="manche-col"><span id="mancheNum1">1</span></td>
+                <td id="M11"><input type="number" value="0"></td>
+                <td id="L11"><input type="number" value="0"></td>
+                <td id="B11"><input type="number" value="0"></td>
+                <td id="tot11" class="total-col">0</td>
+                <td id="totB11" class="total-col">0</td>
+                <td id="totaL11" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum2">2</span></td>
+                <td id="M21"><input type="number" value="0"></td>
+                <td id="L21"><input type="number" value="0"></td>
+                <td id="B21"><input type="number" value="0"></td>
+                <td id="tot21" class="total-col">0</td>
+                <td id="totB21" class="total-col">0</td>
+                <td id="totaL21" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum3">3</span></td>
+                <td id="M31"><input type="number" value="0"></td>
+                <td id="L31"><input type="number" value="0"></td>
+                <td id="B31"><input type="number" value="0"></td>
+                <td id="tot31" class="total-col">0</td>
+                <td id="totB31" class="total-col">0</td>
+                <td id="totaL31" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum4">4</span></td>
+                <td id="M41"><input type="number" value="0"></td>
+                <td id="L41"><input type="number" value="0"></td>
+                <td id="B41"><input type="number" value="0"></td>
+                <td id="tot41" class="total-col">0</td>
+                <td id="totB41" class="total-col">0</td>
+                <td id="totaL41" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum5">5</span></td>
+                <td id="M51"><input type="number" value="0"></td>
+                <td id="L51"><input type="number" value="0"></td>
+                <td id="B51"><input type="number" value="0"></td>
+                <td id="tot51" class="total-col">0</td>
+                <td id="totB51" class="total-col">0</td>
+                <td id="totaL51" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum6">6</span></td>
+                <td id="M61"><input type="number" value="0"></td>
+                <td id="L61"><input type="number" value="0"></td>
+                <td id="B61"><input type="number" value="0"></td>
+                <td id="tot61" class="total-col">0</td>
+                <td id="totB61" class="total-col">0</td>
+                <td id="totaL61" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum7">7</span></td>
+                <td id="M71"><input type="number" value="0"></td>
+                <td id="L71"><input type="number" value="0"></td>
+                <td id="B71"><input type="number" value="0"></td>
+                <td id="tot71" class="total-col">0</td>
+                <td id="totB71" class="total-col">0</td>
+                <td id="totaL71" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum8">8</span></td>
+                <td id="M81"><input type="number" value="0"></td>
+                <td id="L81"><input type="number" value="0"></td>
+                <td id="B81"><input type="number" value="0"></td>
+                <td id="tot81" class="total-col">0</td>
+                <td id="totB81" class="total-col">0</td>
+                <td id="totaL81" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum9">9</span></td>
+                <td id="M91"><input type="number" value="0"></td>
+                <td id="L91"><input type="number" value="0"></td>
+                <td id="B91"><input type="number" value="0"></td>
+                <td id="tot91" class="total-col">0</td>
+                <td id="totB91" class="total-col">0</td>
+                <td id="totaL91" class="total-col">0</td>
+            </tr>
+            <tr>
+                <td class="manche-col"><span id="mancheNum10">10</span></td>
+                <td id="M101"><input type="number" value="0"></td>
+                <td id="L101"><input type="number" value="0"></td>
+                <td id="B101"><input type="number" value="0"></td>
+                <td id="tot101" class="total-col">0</td>
+                <td id="totB101" class="total-col">0</td>
+                <td id="totaL101" class="total-col">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="scoresheet.js"></script>
+</body>
+</html>

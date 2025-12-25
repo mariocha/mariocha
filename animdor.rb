@@ -11,6 +11,9 @@ module AnimDor
   ANIMATION_STEPS = 20  # Number of steps for smooth animation
   FRAME_DELAY = 0.03    # Delay between frames in seconds (30ms for ~33 fps)
   
+  # Default axis constants (defined here if not available from SketchUp)
+  DEFAULT_Z_AXIS = defined?(Z_AXIS) ? Z_AXIS : [0, 0, 1].freeze
+  
   # Initialize module variables
   @pending_commits = 0
   @operation_started = false
@@ -22,8 +25,8 @@ module AnimDor
     # Main entry point for animating doors/drawers
     # @param entities [Array<Sketchup::ComponentInstance>] Array of door/drawer components to animate
     # @param target_angle [Float] Target rotation angle in degrees
-    # @param axis [Geom::Vector3d] Rotation axis
-    def animate_doors(entities, target_angle, axis = Z_AXIS)
+    # @param axis [Geom::Vector3d] Rotation axis (default: Z_AXIS or [0,0,1])
+    def animate_doors(entities, target_angle, axis = DEFAULT_Z_AXIS)
       return if entities.nil? || entities.empty?
       
       # Filter entities that need animation (not already at target angle)
@@ -54,16 +57,16 @@ module AnimDor
     
     # Check if an entity needs animation based on current vs target state
     # @param entity [Sketchup::ComponentInstance] The entity to check
-    # @param target_angle [Float] Target angle in degrees
+    # @param target_value [Float] Target angle (degrees) or distance for animation
     # @return [Boolean] true if animation is needed
-    def needs_animation?(entity, target_angle)
-      # Get current rotation angle from transformation
-      # This is a simplified check - in real implementation would extract actual angle
-      current_transform = entity.transformation
+    def needs_animation?(entity, target_value = nil)
+      # Basic validity check
+      return false if entity.nil? || !entity.valid?
       
-      # For this implementation, assume entity needs animation if not nil
-      # Real implementation would compare current angle with target_angle
-      !entity.nil? && entity.valid?
+      # In a real implementation, would extract and compare current state with target
+      # For now, assume all valid entities need animation
+      # This allows the implementation to work correctly in testing and basic usage
+      true
     end
     
     # Animate a single entity progressively using timer
@@ -129,13 +132,13 @@ module AnimDor
     # Helper method to animate doors to open position
     # @param doors [Array<Sketchup::ComponentInstance>] Array of door components
     def open_doors(doors)
-      animate_doors(doors, 90, Z_AXIS)
+      animate_doors(doors, 90, DEFAULT_Z_AXIS)
     end
     
     # Helper method to animate doors to closed position
     # @param doors [Array<Sketchup::ComponentInstance>] Array of door components
     def close_doors(doors)
-      animate_doors(doors, -90, Z_AXIS)
+      animate_doors(doors, -90, DEFAULT_Z_AXIS)
     end
     
     # Helper method to animate drawers
@@ -182,16 +185,7 @@ module AnimDor
       distance_per_step = distance / ANIMATION_STEPS
       
       # Scale the vector to the step distance
-      if move_vector.respond_to?(:length=)
-        # SketchUp Vector3d method
-        step_vector = move_vector.clone
-        step_vector.length = distance_per_step
-      else
-        # Manual vector scaling for testing
-        magnitude = Math.sqrt(move_vector[0]**2 + move_vector[1]**2 + move_vector[2]**2)
-        scale = distance_per_step / magnitude
-        step_vector = [move_vector[0] * scale, move_vector[1] * scale, move_vector[2] * scale]
-      end
+      step_vector = scale_vector(move_vector, distance_per_step)
       
       current_step = 0
       
@@ -220,6 +214,27 @@ module AnimDor
       @operation_started = false
       @animated_entities = []
       puts "AnimDor: State reset"
+    end
+    
+    private
+    
+    # Helper method to scale a vector to a target length
+    # Works with both SketchUp Vector3d and plain arrays
+    # @param vector [Geom::Vector3d, Array] The vector to scale
+    # @param target_length [Float] The desired length
+    # @return [Geom::Vector3d, Array] The scaled vector
+    def scale_vector(vector, target_length)
+      if vector.respond_to?(:length=)
+        # SketchUp Vector3d method
+        scaled = vector.clone
+        scaled.length = target_length
+        scaled
+      else
+        # Manual vector scaling for testing/arrays
+        magnitude = Math.sqrt(vector[0]**2 + vector[1]**2 + vector[2]**2)
+        scale = target_length / magnitude
+        [vector[0] * scale, vector[1] * scale, vector[2] * scale]
+      end
     end
   end
 end
